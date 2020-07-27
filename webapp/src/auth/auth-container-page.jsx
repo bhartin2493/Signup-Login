@@ -9,6 +9,9 @@ import AuthSignupComponent from "./auth-signup-component.jsx";
 class AuthContainerPage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isSignup: false,
+    };
   }
 
   // componentDidUpdate() {
@@ -29,15 +32,33 @@ class AuthContainerPage extends React.Component {
     this.pushToDashboard(this.props.isSignedIn);
   }
 
+  OnCreateNewAccount = () => {
+    this.setState({
+      isSignup: true,
+    });
+  };
+
+  switchToLogin = (val) => {
+    this.setState({ isSignup: false });
+  };
+
   render() {
-    console.log("Props:", this.props);
+    console.log(
+      "Props:",
+      this.props,
+      this.props.history.location.pathname == "/signup",
+      this.props.history.location.pathname
+    );
     return (
       <div className="main-component">
-        {this.props.match.path == "/signup" ? (
-          <AuthSignupComponent />
-        ) : this.props.match.path == "/signin" ? (
-          <AuthLoginComponent />
-        ) : null}
+        {this.state.isSignup == true ? (
+          <AuthSignupComponent switchToLogin={this.switchToLogin} />
+        ) : (
+          <AuthLoginComponent
+            isSignup={this.state.isSignup}
+            OnCreateNewAccount={this.OnCreateNewAccount}
+          />
+        )}
       </div>
     );
   }

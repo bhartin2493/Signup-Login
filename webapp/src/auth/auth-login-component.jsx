@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./auth.scss";
 
@@ -27,10 +27,6 @@ class AuthLoginComponent extends React.Component {
       email: "",
       password: "",
     });
-  };
-
-  OnCreateNewAccount = () => {
-    this.props.history.push("/signup");
   };
 
   onSubmitForm = () => {
@@ -102,9 +98,12 @@ class AuthLoginComponent extends React.Component {
                       </button>
                     </div>
                     <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 p-r-0">
+                      {/* <Link to="/signup"> Create an account</Link> */}
                       <button
                         className="btn btn-secondary cancel-btn"
-                        onClick={(event) => this.OnCreateNewAccount(event)}
+                        onClick={(event) =>
+                          this.props.OnCreateNewAccount(event)
+                        }
                       >
                         Create an account
                       </button>

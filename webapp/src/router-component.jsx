@@ -16,11 +16,8 @@ class RouterComponent extends React.Component {
       <div className="main">
         <div className="content-wraper">
           <div className="main-content">
-            {/* <Route
-              exact
-              path={"/signin" || "/signup"}
-              component={() => <AuthContainerPage />}
-            /> */}
+            <Route path="/signin" component={() => <AuthContainerPage />} />
+            <Route path="/signup" component={() => <AuthContainerPage />} />
             <Route
               exact
               path="/dashboard"

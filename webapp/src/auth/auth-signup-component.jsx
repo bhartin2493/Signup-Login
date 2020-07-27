@@ -51,8 +51,7 @@ class AuthSignupComponent extends React.Component {
     this.props.createUser(userData).then((msgRcvd) => {
       setTimeout(() => {
         if (msgRcvd.message.status == 200) {
-          console.log("props:", this.props);
-          this.props.history.push("/signin");
+          this.props.switchToLogin(true);
         } else {
           console.log("Message in else received:", msgRcvd);
           this.setState({
