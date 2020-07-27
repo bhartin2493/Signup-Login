@@ -26,11 +26,7 @@ class App extends React.Component {
       <Provider store={store}>
         <HashRouter>
           <Switch>
-            <Route
-              exact
-              path="/signin"
-              component={() => <AuthContainerPage />}
-            />
+            <Route exact path="/" component={() => <AuthContainerPage />} />
             <Route
               exact
               path="/dashboard"

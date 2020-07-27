@@ -17,7 +17,7 @@ class DashboardComponent extends React.Component {
   userLogout() {
     this.props.signout().then((done) => {
       if (done) {
-        this.props.history.push("/signin");
+        this.props.history.push("/");
       }
     });
   }
